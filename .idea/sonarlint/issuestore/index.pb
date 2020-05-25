@@ -3,3 +3,7 @@
 	README.md,8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
 A
 Week_01/README.md,8/4/84727dcd126ca2516dc620bac431df230250faee
+G
+Week_01/MoveZeroes.java,0/9/0961afd8d221e52c08ef3c6bce12a88e457ac85f
+A
+Week_02/README.md,c/e/ce82317245320e2b8688cf3581645e0049e93de3
