@@ -354,7 +354,7 @@ class Solution {
 
 
 9. 最小的 k 个数 (https://leetcode-cn.com/problems/binary-tree-inorder-traversal/)
-```java
+```java：
 
 ```
 
@@ -373,10 +373,23 @@ class Solution {
 #### 本周二刷题目
 1. 两数之和 (https://leetcode-cn.com/problems/two-sum/description/)
 ```java
-
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        Map<Integer, Integer> cache = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            int targetValue = target - nums[i];
+            if (cache.containsKey(targetValue)) {
+                int[] result = new int[2];
+                result[0] = i;
+                result[1] =  cache.get(targetValue);
+                return result;
+            }
+            cache.put(nums[i], i);
+        }
+        return new int[0];
+    }
+}
 ```
 
-
-
-
 #### 本周总结
+1. hashMap平常使用较多，线程问题理解较差，cas和volitile相关概念理解上较为薄弱
