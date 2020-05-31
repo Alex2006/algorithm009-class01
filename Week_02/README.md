@@ -279,44 +279,30 @@ class Solution {
 ```java
 class Solution {
     // 需要进一步优化，超出内存限制
-    public List<List<Integer>> levelOrder(Node root) {
-        List<List<Integer>> result = new ArrayList<>();
-        levelIterTree(Arrays.asList(root), result);
-        return result;
-    }
-
-
-    private void levelIterTree(List<Node> node, List<List<Integer>> result) {
-        if (node != null) {
-            List<Node> nextLevenNode = new ArrayList<>();
-            List<Integer> currentLevelVal = new ArrayList<>();
-            for (int i = 0; i < node.size(); i++) {
-                currentLevelVal.add(node.get(i).val);
-                if (node.get(i).children.size() > 0) {
-                    nextLevenNode.addAll(node.get(i).children);
+     public List<List<Integer>> levelOrder(Node root) {
+            List<List<Integer>> result = new ArrayList<>();
+            if (root == null) {
+                return result;
+            }
+            levelIterTree(Arrays.asList(root), result);
+            return result;
+        }
+    
+    
+        private void levelIterTree(List<Node> node, List<List<Integer>> result) {
+            if (node != null && node.size() > 0) {
+                List<Node> nextLevenNode = new ArrayList<>();
+                List<Integer> currentLevelVal = new ArrayList<>();
+                for (int i = 0; i < node.size(); i++) {
+                    currentLevelVal.add(node.get(i).val);
+                    if (node.get(i).children.size() > 0) {
+                        nextLevenNode.addAll(node.get(i).children);
+                    }
                 }
+                result.add(currentLevelVal);
+                levelIterTree(nextLevenNode, result);
             }
-            result.add(currentLevelVal);
-            levelIterTree(nextLevenNode, result);
         }
-    }
-    public List<List<Integer>> levelOrder(Node root) {
-        List<List<Integer>> result = new ArrayList<>();
-        if (root == null) return result;
-        Queue<Node> queue = new LinkedList<>();
-        queue.add(root);
-        while (!queue.isEmpty()) {
-            List<Integer> level = new ArrayList<>();
-            int size = queue.size();
-            for (int i = 0; i < size; i++) {
-                Node node = queue.poll();
-                level.add(node.val);
-                queue.addAll(node.children);
-            }
-            result.add(level);
-        }
-        return result;
-    }
 // 标准解法，仅仅使用了一个List来完成每次的创建操作
 //    public List<List<Integer>> levelOrder(Node root) {
 //        List<List<Integer>> result = new ArrayList<>();
