@@ -281,14 +281,10 @@ class Solution {
     // 需要进一步优化，超出内存限制
      public List<List<Integer>> levelOrder(Node root) {
             List<List<Integer>> result = new ArrayList<>();
-            if (root == null) {
-                return result;
-            }
             levelIterTree(Arrays.asList(root), result);
             return result;
         }
-    
-    
+        
         private void levelIterTree(List<Node> node, List<List<Integer>> result) {
             if (node != null && node.size() > 0) {
                 List<Node> nextLevenNode = new ArrayList<>();
