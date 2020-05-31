@@ -24,11 +24,18 @@
     1. 先进后出数据结构
     2. 函数编程的逻辑基础
     3. 栈顶元素操作方便
+    4. 添加删除 O(1)
+    5. 查询 O(n)
 5. 队列
     1. 先进先出的数据结构
+    2. 添加删除 O(1)
+    3. 查询 O(n)
 6. 优先队列
     1. 
 7. 双端队列
+    1. 栈和队列的结合体
+    2. 插入和删除 O(1)
+    3. 查询 O(n)
 
 #### 代码
 1.移动零(https://leetcode-cn.com/problems/move-zeroes/)
@@ -154,7 +161,20 @@ class Solution {
 
 6.旋转数组
 ```java
+// 暴力解法，循环移动
+class Solution {
+    public void rotate(int[] nums, int k) {
+        for (int i = 0; i < k; i++) {
+            // 获取数组最后一个元素nums[ j + 1 ]
+            int last = nums[nums.length - 1];
 
+            for (int j = nums.length - 1 ; j > 0; j--) {
+                nums[j] = nums[j-1];
+            }
+            nums[0] = last;
+        }
+    }
+}
 ```
 
 7.两两交换链表中的节点
@@ -223,6 +243,41 @@ class Solution {
 
 ```
 
+
+18.加一
+```java
+// 第一版解决方案，空间复杂度较高
+class Solution {
+    public int[] plusOne(int[] digits) {
+        int cusor = 1;
+        for (int i = digits.length - 1; i >= 0 ; i--) {
+            if (digits[i] + cusor == 10) {
+                digits[i] = 0;
+                cusor = 1;
+            } else {
+                digits[i] = digits[i] + cusor;
+                cusor = 0;
+            }
+        }
+
+        if (cusor == 1) {
+            return resizeArray(digits);
+        } else {
+            return digits;
+        }
+    }
+
+    private int[] resizeArray(int[] array) {
+        int[] result = new int[array.length + 1];
+// 阅读答案后确认这里不需要执行拷贝操作
+//        for (int i = 0; i < array.length; i++) {
+//            result[i + 1] = array[i];
+//        }
+        result[0] = 1;
+        return result;
+    }
+}
+```
 #### 总结
 1. 用 add first 或 add last 这套新的 API 改写 Deque 的代码
 ```java
