@@ -7,3 +7,5 @@ G
 Week_01/MoveZeroes.java,0/9/0961afd8d221e52c08ef3c6bce12a88e457ac85f
 A
 Week_02/README.md,c/e/ce82317245320e2b8688cf3581645e0049e93de3
+A
+Week_03/README.md,d/a/dad5b125beb422d09cdb322eaf17767b48f58b21

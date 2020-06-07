@@ -330,7 +330,38 @@ class Solution {
 
 
 9. 最小的 k 个数 (https://leetcode-cn.com/problems/binary-tree-inorder-traversal/)
-```java：
+```java
+// 第一遍使用排序，直接获取前K个数据，对应的时间复杂度依赖于排序算法,默认快排 O(logn)
+class Solution {
+    public int[] getLeastNumbers(int[] arr, int k) {
+        Arrays.sort(arr);
+        int[] result = new int[k];
+        for (int i = 0; i < k; i++) {
+            result[i] = arr[i];
+        }
+        return result;
+    }
+}
+
+// 使用大顶堆(采用java的priorityQueue),完成数据的构建后，取前K个元素
+class Solution {
+    public int[] getLeastNumbers(int[] arr, int k) {
+        if (k == 0 || arr.length == 0) {
+            return new int[0];
+        }
+
+        Queue<Integer> priorityQueue = new PriorityQueue<>( (v1, v2) -> v1 - v2);
+        for (int item: arr) {
+            priorityQueue.add(item);
+        }
+
+        int[] result = new int[k];
+        for (int i = 0; i < k; i++) {
+            result[i] = priorityQueue.poll();
+        }
+        return result;
+    }
+}
 
 ```
 
